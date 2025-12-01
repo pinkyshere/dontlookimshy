@@ -8,11 +8,10 @@
 }
 
 /* --- BASE STYLES --- */
-body, html {
+html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
   background-color: black;
   color: white;
   font-family: 'Source Code Pro', monospace;
@@ -20,7 +19,6 @@ body, html {
 
 pre, span, div, p, h1 {
   background-color: transparent;
-  text-align: center;
 }
 
 /* --- THE FIXED, FULL-SCREEN PARTICLES BACKGROUND --- */
@@ -47,11 +45,20 @@ canvas.particles-js-canvas-el {
   padding: 0 !important;
 }
 
-/* --- CONTENT POSITIONING --- */
+/* --- CONTENT CONTAINER --- */
+#content-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --- CENTERED POSITIONING --- */
 .center {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
 }
 
 .topbar {
@@ -62,46 +69,70 @@ canvas.particles-js-canvas-el {
   bottom: 5%;
 }
 
+/* --- TITLE STYLES --- */
 .title {
-  font-size: clamp(18px, 5vw, 25px);
+  font-size: 25px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* --- TYPING ANIMATION (MIDDLE) --- */
+#typing {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
   white-space: nowrap;
 }
 
-/* --- INLINE CONTAINER (Bottom text) --- */
+/* --- EMOJI IMAGES --- */
+.emoji {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* --- INLINE CONTAINER (Bottom marquee) --- */
 .inline-container {
-  position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
   width: 90%;
   max-width: 470px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
 }
 
-.emoji {
-  height: 20px;
-  width: 20px;
-  object-fit: contain;
-  vertical-align: middle;
-  flex-shrink: 0;
+.inline-container pre {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
 }
 
 #marquee {
   display: inline-block;
-  width: 100%;
-  max-width: 450px;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: clamp(12px, 3vw, 16px);
+  max-width: 450px;
+  overflow: visible;
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+    gap: 8px;
+  }
+  
+  #typing {
+    font-size: 16px;
+    max-width: 90%;
+  }
+  
   .topbar {
     top: 8%;
   }
@@ -111,21 +142,33 @@ canvas.particles-js-canvas-el {
   }
   
   .inline-container {
-    bottom: 18%;
     width: 95%;
-    padding: 0 10px;
-  }
-  
-  .title {
-    font-size: clamp(16px, 6vw, 25px);
+    max-width: 100%;
   }
   
   #marquee {
-    font-size: clamp(11px, 3.5vw, 14px);
+    max-width: 90vw;
+    font-size: 14px;
+  }
+  
+  .emoji {
+    height: 18px;
+    width: 18px;
   }
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 18px;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  #typing {
+    font-size: 14px;
+    max-width: 85%;
+  }
+  
   .topbar {
     top: 10%;
   }
@@ -135,13 +178,30 @@ canvas.particles-js-canvas-el {
   }
   
   .inline-container {
-    bottom: 20%;
-    flex-direction: column;
-    gap: 8px;
+    width: 98%;
+  }
+  
+  #marquee {
+    font-size: 12px;
   }
   
   .emoji {
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+/* --- VERY SMALL SCREENS --- */
+@media (max-width: 360px) {
+  .title {
+    font-size: 16px;
+  }
+  
+  #typing {
+    font-size: 12px;
+  }
+  
+  #marquee {
+    font-size: 11px;
   }
 }
