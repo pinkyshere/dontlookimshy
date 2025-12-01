@@ -1,102 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
-/* GLOBAL */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden; /* prevent horizontal drift */
+/* --- YOUR ORIGINAL STYLES --- */
+
+pre, span, div, p, h1 {
+  background-color: transparent;
 }
 
-body {
-  position: relative;
-  width: 100vw;
-  background: black;
+* {
+  text-align: center;
+
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+
+  background-color: black;
   color: white;
+
   font-family: 'Source Code Pro', monospace;
 }
 
-/* reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  color: inherit;
-  text-align: center;
+.inline-container {
+  position: absolute;
+  bottom: 15%;
+  width: 470px;
 }
 
-/* PARTICLES BACKGROUND */
-#particles-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1;
+.emoji {
+  height: 20px;
+  bottom:50%;
+  transform:translateY(30%);
 }
 
-#particles-container canvas {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-
-  width: 100% !important;
-  height: 100% !important;
-
-  display: block !important;
-  transform: none !important;
+#marquee {
+  display: inline-block;
+  width: 450px;
 }
 
-/* CENTERED ELEMENTS */
+.title {
+  font-size: 25px;
+}
+
 .center {
   position: absolute;
+
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+
+  transform: translate(-50%, -50%);
 }
 
-/* TOP, MIDDLE, BOTTOM BARS */
 .topbar {
   top: 5%;
 }
 
 .bottombar {
+  top: auto;
   bottom: 5%;
 }
 
-/* TYPING TEXT */
-#typing {
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(18px, 5vw, 26px);
+/* --- THE FIXED, FULL-SCREEN PARTICLES BACKGROUND --- */
+
+#particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
 }
 
-/* TITLE */
-.title {
-  font-size: clamp(20px, 6vw, 32px);
-}
+/* FORCE particles canvas to EXACTLY match viewport (fixes mobile shifting) */
+canvas.particles-js-canvas-el {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
 
-/* MARQUEE CONTAINER */
-.inline-container {
-  width: 90%;
-  max-width: 470px;
-}
+  width: 100vw !important;
+  height: 100vh !important;
 
-/* SCROLLING TEXT INSIDE THE BOTTOM BAR */
-#marquee {
-  display: inline-block;
-  width: 100%;
-  max-width: 450px;
-}
-
-/* EMOJI / ICONS */
-.emoji {
-  height: 20px;
-  width: auto;
-  transform: translateY(30%);
+  margin: 0 !important;
+  padding: 0 !important;
 }
