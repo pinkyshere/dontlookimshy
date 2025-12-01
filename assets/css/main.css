@@ -66,8 +66,10 @@ pre {
 }    
     
 .title {    
-  font-size: 25px;    
-}    
+  font-size: 25px;
+  white-space: nowrap;
+  width: auto;
+}
     
 .center {    
   position: absolute;    
