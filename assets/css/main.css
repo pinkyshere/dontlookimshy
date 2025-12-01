@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
-pre, span, div, p, h1 {
-  background-color: transparent;
-}
-
+/* GLOBAL */
 * {
   text-align: center;
+  margin: 0;
+  padding: 0;
 
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
+  overflow-x: hidden;   /* allow vertical scroll */
+  overflow-y: auto;
 
   background-color: black;
   color: white;
@@ -17,50 +15,59 @@ pre, span, div, p, h1 {
   font-family: 'Source Code Pro', monospace;
 }
 
-pre {
-  /* background: white; */
+pre, span, div, p, h1 {
+  background-color: transparent;
 }
 
-.inline-container {
-  position: absolute;
-  bottom: 15%;
-  width: 470px;
-  /* width: 600px; */
-}
-
-.emoji {
-  height: 20px;
-  bottom:50%;
-  transform:translateY(30%);
-}
-
-#marquee {
-  display: inline-block;
-  width: 450px;
-}
-
+/* TITLE + BARS */
 .title {
-  font-size: 25px;
+  font-size: clamp(18px, 5vw, 28px); /* scales on mobile */
 }
 
+/* MAIN POSITIONING */
 .center {
   position: absolute;
-
   left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .topbar {
   top: 5%;
 }
 
-.centerbar {
-  
+.bottombar {
+  bottom: 5%;
 }
 
-.bottombar {
-  top: auto;
-  bottom: 5%;
+/* INLINE CONTAINER */
+.inline-container {
+  width: 90%;
+  max-width: 470px;
+}
+
+/* MARQUEE */
+#marquee {
+  display: inline-block;
+  width: 100%;
+  max-width: 450px;
+}
+
+/* EMOJI / ICON */
+.emoji {
+  height: 20px;
+  width: auto;
+  transform: translateY(30%);
+}
+
+/* MAIN TYPING TEXT */
+#typing {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ENSURE CONTENT-CONTAINER DOESN’T GET CUT OFF */
+#content-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
